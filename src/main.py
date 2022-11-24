@@ -1,19 +1,25 @@
-import injector
-from dependencyBuilder import Dependency
+"""メインモジュール"""
+from infrastructures import Dependency
+from modules.exchange import ExchangeService
 
-from services import ExchangeService, NotificationService, TechnicalAnalyzeService
+def main():
+    # setup
 
-# setup
+    exchangeService = Dependency[ExchangeService]()
+    print(exchangeService.__class__)
 
-exchangeService = Dependency[ExchangeService]()
-technicalAnalyzeService = Dependency[TechnicalAnalyzeService]()
-notificationService = Dependency[NotificationService]()
+    # technicalAnalyzeService = Dependency[TechnicalAnalyzeService]()
+    # notificationService = Dependency[notification_service]()
 
-# get args
+    # # get args
 
-# get notification message
-prices = exchangeService.getPrices()
-message: str = technicalAnalyzeService.getSignal(prices)
+    # # get notification message
+    # prices = exchangeService.getPrices()
+    # message: str = technicalAnalyzeService.getSignal(prices)
 
-# if having message, notify to slack
-if message is not None : notificationService.notify(message)
+    # # if having message, notify to slack
+    # if message is not None : notificationService.notify(message)
+
+
+if __name__ == "__main__":
+    main()
