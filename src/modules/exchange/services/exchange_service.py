@@ -1,6 +1,5 @@
 """取引所関連のサービスモジュール"""
 from abc import ABC, abstractmethod
-from dataclasses import dataclass
 
 class ExchangeService(ABC):
     """取引所関連のサービスクラス"""

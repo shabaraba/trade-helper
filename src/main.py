@@ -1,6 +1,7 @@
 """メインモジュール"""
 from infrastructures import Dependency
-from modules.exchange import ExchangeService
+from modules.exchange import *
+from modules.notification import *
 
 def main():
     # setup

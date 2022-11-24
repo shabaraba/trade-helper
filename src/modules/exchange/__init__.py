@@ -5,3 +5,7 @@ from .services.exchange_service_impl import ExchangeServiceImpl
 
 
 Dependency.add(ExchangeService, ExchangeServiceImpl)
+
+__all__ = [
+    "ExchangeService",
+]
