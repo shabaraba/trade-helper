@@ -1,7 +1,7 @@
 """取引所関連のサービスモジュール"""
-from abc import ABC, abstractmethod
+from abc import ABCMeta, abstractmethod
 
-class ExchangeService(ABC):
+class ExchangeService(metaclass=ABCMeta):
     """取引所関連のサービスクラス"""
 
     @abstractmethod

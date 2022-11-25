@@ -10,7 +10,7 @@ class ModuleFactory:
         self._injector = injector.Injector(self.__class__.configure)
     
 
-    def __getitem__(self, klass: Type[Any]) -> Callable:
+    def __getitem__(self, klass) -> Callable:
         # 与えられたインタフェースに応じて実体クラスを返す
         return lambda: self._injector.get(klass)
 
@@ -20,5 +20,5 @@ class ModuleFactory:
         pass
     
 
-    def add(self, interface: Type[Any], implement: Type[Any]):
-        self._injector.binder.bind(interface, to=implement) # type: ignore[type-abstract]
+    def add(self, interface_, implement_):
+        self._injector.binder.bind(interface_, to=implement_) # type: ignore[type-abstract]

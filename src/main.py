@@ -1,29 +1,34 @@
 """メインモジュール"""
+from injector import inject
+
 from infrastructures import Dependency
 from modules.exchange import *
 from modules.notification import *
 
-def main():
-    # setup
+class Main():
 
-    exchangeService = Dependency[ExchangeService]()
-    print(exchangeService.__class__)
+    @inject
+    def __init__(
+        self, 
+        exchangeService: ExchangeService, 
+        notificationService: NotificationService
+    ):
+        self.exchangeService = exchangeService
+        self.notificationService = notificationService
 
-    # technicalAnalyzeService = Dependency[TechnicalAnalyzeService]()
-    # notificationService = Dependency[notification_service]()
+    
+    def run(self):
+        # setup
 
-    # # get args
+        print(self.exchangeService.__class__)
 
-    # # get notification message
-    # prices = exchangeService.getPrices()
-    # message: str = technicalAnalyzeService.getSignal(prices)
-
-    # # if having message, notify to slack
-    message = 'test'
-    if message is None : return 
-    notificationService = Dependency[NotificationService]()
-    print(notificationService.notify(message))
+        # # if having message, notify to slack
+        message = 'test'
+        if message is None : return 
+        print(self.notificationService.notify(message))
 
 
 if __name__ == "__main__":
-    main()
+    main = Dependency[Main]
+    main.run()
+    
