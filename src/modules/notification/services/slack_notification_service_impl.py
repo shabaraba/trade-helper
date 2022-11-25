@@ -8,7 +8,10 @@ class SlackNotificationServiceImpl(NotificationService):
     """slack通知サービス"""
 
     def notify(self, message: str) -> bool:
-        # TODO:
-        slack = slackweb.Slack(url=SLACK_WEBHOOK_URL)
-        slack.notify(text="Pythonからslackへ通知する")
-        return True
+        try:
+            slack = slackweb.Slack(url=SLACK_WEBHOOK_URL)
+            slack.notify(text=message)
+            return True
+        except Exception as e:
+            print(e)
+            return False

@@ -20,8 +20,9 @@ def main():
 
     # # if having message, notify to slack
     message = 'test'
+    if message is None : return 
     notificationService = Dependency[NotificationService]()
-    if message is not None : print(notificationService.notify(message))
+    print(notificationService.notify(message))
 
 
 if __name__ == "__main__":
