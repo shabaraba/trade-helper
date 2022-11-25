@@ -19,7 +19,9 @@ def main():
     # message: str = technicalAnalyzeService.getSignal(prices)
 
     # # if having message, notify to slack
-    # if message is not None : notificationService.notify(message)
+    message = 'test'
+    notificationService = Dependency[NotificationService]()
+    if message is not None : print(notificationService.notify(message))
 
 
 if __name__ == "__main__":
