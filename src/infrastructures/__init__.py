@@ -1,7 +1,6 @@
 """module横断モジュール"""
-from .dependencyBuilder import ModuleFactory
+from .dependencyInjector import DependencyInjector
+from .env import *
 
 
-Dependency = ModuleFactory()
-
-__all__ = ['Dependency']
+Dependency = DependencyInjector()
