@@ -12,10 +12,9 @@ class Main():
         self, 
         exchangeService: ExchangeService, 
         notificationService: NotificationService
-    ):
+    ) -> None:
         self.exchangeService = exchangeService
         self.notificationService = notificationService
-
     
     def run(self):
         # setup
@@ -23,12 +22,13 @@ class Main():
         print(self.exchangeService.__class__)
 
         # # if having message, notify to slack
-        message = 'test'
+        message = None
         if message is None : return 
         print(self.notificationService.notify(message))
 
 
 if __name__ == "__main__":
-    main = Dependency[Main]
+    main = Dependency.resolve(Main)
+    print(main.exchangeService)
     main.run()
     
