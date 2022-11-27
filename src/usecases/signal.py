@@ -1,7 +1,7 @@
 """シグナルエンティティ（enum）"""
 from enum import IntEnum, auto
 
-class Sygnal(IntEnum):
+class Signal(IntEnum):
     BUY = auto()
     SELL = auto()
     SETTLE = auto()
